@@ -1,5 +1,7 @@
 # CSC3003_OIP_Object_Detection
- 
+
+Last updated : 24/8/2021
+
 ## Installation
 This project is using TensorFlow 2.5.0. Compatibility of the version can be found at [TensorFlow GPU Support](https://www.tensorflow.org/install/source#gpu)
 
@@ -196,16 +198,14 @@ tensorboard --logdir=workspace\models\ssd_mobilenet_v2_fpnlite_640x640_coco17_tp
 ```
 
 Navigate to the link to view the tensorboard
-
 ![step 6 command](docs/steps/step_6_command.PNG)
 
 ![step 6 tensorboard](docs/steps/step_6_tensorboard.PNG)
 
 #### 7. Export to TFLite
 Run through the command and the 2 file "detect.tflite" and "labelmap.txt" should be created be place inside the Raspberry PI for it to run
-![step 7 export](docs/steps/step_7_export.PNG.PNG)
+![step 7 export](docs/steps/step_7_export.PNG)
 
 #### 8. Complie to EdgeTPU
 Unfortunately, the compilation can only be ran in a linux platform. In this case, GoogleColab will be better as it does support the process. Upload "Coral_EdgeTPU_Compiler.ipynb" to GoogleColab and run the process accordingly.
 
-Last updated : 24/8/2021
