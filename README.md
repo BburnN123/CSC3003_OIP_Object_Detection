@@ -45,16 +45,26 @@ python labelImg.py [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
 [Watch the video here](https://www.youtube.com/watch?v=p0nR2YsCY_U&ab_channel=TzuTaLin)
  
 ## TensorflowLite 2.5.0 Object Detection 
-The project will focus on 3 main aspect for the data training
+The project will focus on the following aspect:
+
 1) Setting up of the environment
 2) Running the TFLITE_Model_Maker.ipynb
-Before we start, we have to set up our environment using anacoda.
+3) Trainning the Data
+4) Implementing on the Raspberry PI
+
+### Setting up of the environment
+Before we start, we will be setting up our environment using anacoda.
 
 Open the anacoda3 command prompt for windows and run it as an administrator
+```conda create -n tensorflow pip python=3.8```
 
-![anacoda](docs/demo3.jpg)
+Activate the environment after creating it
+```conda activate tensorflow```
+
+Open the anacoda navigator and install Jupyter Notebook
+![anacoda](docs/anacoda_installation.PNG)
 
 
-conda activate tensorflow
+
 
 Last updated : 24/8/2021
