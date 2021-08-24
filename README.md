@@ -15,6 +15,8 @@ The image must be in [Pascal Voc](https://www.tensorflow.org/lite/api_docs/pytho
 The (labelImg)[https://github.com/tzutalin/labelImg] is a GUI that is able to generate the file for the images. It is fast to label and annotate the image.
 It is able to support YOLO3, Pascal Voc etc,
 
+![plot](./docs/plot.png)
+
 ### For Windows
 Install the follwing using pip
 - [PyQt5](https://www.riverbankcomputing.com/software/pyqt/download)
@@ -43,7 +45,7 @@ python labelImg.py [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
 
 [Watch the video here](https://www.youtube.com/watch?v=p0nR2YsCY_U&ab_channel=TzuTaLin)
  
- ## Setting up the environment
+## Setting up the environment
 conda create -n tensorflow pip python=3.8
 
 conda activate tensorflow
