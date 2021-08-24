@@ -15,7 +15,7 @@ The image must be in [Pascal Voc](https://www.tensorflow.org/lite/api_docs/pytho
 The (labelImg)[https://github.com/tzutalin/labelImg] is a GUI that is able to generate the file for the images. It is fast to label and annotate the image.
 It is able to support YOLO3, Pascal Voc etc,
 
-![plot](./docs/plot.png)
+![plot](docs/plot.png)
 
 ### For Windows
 Install the follwing using pip
