@@ -15,7 +15,7 @@ The image must be in [Pascal Voc](https://www.tensorflow.org/lite/api_docs/pytho
 The (labelImg)[https://github.com/tzutalin/labelImg] is a GUI that is able to generate the file for the images. It is fast to label and annotate the image.
 It is able to support YOLO3, Pascal Voc etc,
 
-![plot](docs/plot.png)
+![demo](docs/demo3.jpg)
 
 ### For Windows
 Install the follwing using pip
@@ -42,11 +42,18 @@ python labelImg.py
 python labelImg.py [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
 ```
 
-
 [Watch the video here](https://www.youtube.com/watch?v=p0nR2YsCY_U&ab_channel=TzuTaLin)
  
-## Setting up the environment
-conda create -n tensorflow pip python=3.8
+## TensorflowLite 2.5.0 Object Detection 
+The project will focus on 3 main aspect for the data training
+1) Setting up of the environment
+2) Running the TFLITE_Model_Maker.ipynb
+Before we start, we have to set up our environment using anacoda.
+
+Open the anacoda3 command prompt for windows and run it as an administrator
+
+![anacoda](docs/demo3.jpg)
+
 
 conda activate tensorflow
 
