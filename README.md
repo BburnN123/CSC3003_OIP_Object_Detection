@@ -205,11 +205,7 @@ Navigate to the link to view the tensorboard
 Run through the command and the 2 file "detect.tflite" and "labelmap.txt" should be created be place inside the Raspberry PI for it to run
 ![step 7 export](docs/steps/step_7_export.PNG.PNG)
 
-![step 1](docs/steps/step_1.PNG)
-![step 2](docs/steps/step_2.PNG)
-![step 3](docs/steps/step_3.PNG)
-![step 4](docs/steps/step_4.PNG)
-![step 5](docs/steps/step_5.PNG)
-![step 6](docs/steps/step_6.PNG)
-![step 7](docs/steps/step_7.PNG)
+#### 8. Complie to EdgeTPU
+Unfortunately, the compilation can only be ran in a linux platform. In this case, GoogleColab will be better as it does support the process. Upload "Coral_EdgeTPU_Compiler.ipynb" to GoogleColab and run the process accordingly.
+
 Last updated : 24/8/2021
