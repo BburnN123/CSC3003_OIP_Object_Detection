@@ -117,3 +117,6 @@ dmypy.json
 /tensorflow
 /workspace
 /protoc
+/dataset
+
+*.zip
