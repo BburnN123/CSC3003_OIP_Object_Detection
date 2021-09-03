@@ -5,6 +5,7 @@ Last updated : 3/9/2021
 ## Equipment
 
 - Raspberry Pi 3B+
+- Raspberry Pi Camera
 
 ## Installation of Tflite
 ```
