@@ -84,7 +84,6 @@ Once done, launch Jupyter Notebook and open the TFLITE_Model_Maker.ipynb from th
 ## Additional Steps you can follow
 1) [Preparing of dataset ](docs/Preparation.md)
 2) [Deployment to Raspberry Pi](docs/Deployment.md)
-3) 
 
 
 ## Running the Running the TFLITE_Model_Maker.ipynb
@@ -210,10 +209,36 @@ Navigate to the link to view the tensorboard
 
 ![step 6 tensorboard](docs/steps/step_6_tensorboard.PNG)
 
+
 #### 7. Export to TFLite
 Run through the command and the 2 file "detect.tflite" and "labelmap.txt" should be created be place inside the Raspberry PI for it to run
 ![step 7 export](docs/steps/step_7_export.PNG)
 
-#### 8. Complie to EdgeTPU
+#### 8.Evaluate the model
+To evaluate the detection precision and recall, copy the command given into the cmd
+![step 8](docs/steps/step_8_command.PNG)
+
+![step 8 cmd](docs/steps/step_8_cmd.PNG)
+
+We would look at the average precision and average recall to evaluate the model. 
+
+![step 8 eval](docs/steps/step_8_eval.PNG)
+
+You may further inspect through tensorboard too
+
+``` 
+cd workspace/model/<model name>/eval
+tensorboard --logdir=.
+```
+
+![step 8 tensor](docs/steps/step_8_tensor.PNG)
+![step 8 tensor dir](docs/steps/step_8_tensor_dir.PNG)
+![step 8 tensorboard](docs/steps/step_8_tensorboard.PNG)
+
+
+You should be able to see the 
+
+#### 9. Complie to EdgeTPU
 Unfortunately, the compilation can only be ran in a linux platform. In this case, GoogleColab will be better as it does support the process. Upload "Coral_EdgeTPU_Compiler.ipynb" to GoogleColab and run the process accordingly.
 
+Recommended to use a model of 300 x 300 for Raspberry Pi 3B + 
