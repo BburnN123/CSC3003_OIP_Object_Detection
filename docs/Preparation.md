@@ -10,17 +10,17 @@ Last updated : 3/9/2021
 
 All the images and xml dataset should be here
 
-![dataset](dataset.PNG)
+![dataset](preparation/dataset.PNG)
 
 ### 2. Run as per normal You will be able to see a csv file being created under workspace/annotations/dataset_label.csv
 
 ### 3. You are able to specific the number of image you want to train under 4. Split Image
 
-![split dataset](split.PNG)
+![split dataset](preparation/split.PNG)
 
 ### 4. You are also able to choose the label you wish to exclude for the training and test data
 
-![exception dataset](exception.PNG)
+![exception dataset](preparation/exception.PNG)
 
 ### You are all set for to go!
 
