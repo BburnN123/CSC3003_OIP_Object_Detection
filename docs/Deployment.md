@@ -29,3 +29,20 @@ sudo apt-get install python3-tflite-runtime
 - Photos (For the SSClean.py to load the image)
 
 ![folder](docs/example.PNG)
+
+## Run the file
+``` 
+python3 SSCleaner.py --modeldir=model --grayscale --dev=ttyACM0
+```
+
+Options
+--modeldir (the path to all your model)
+-- grayscale (enable grayscale image)
+-- dev (serial port to the audrino) 
+
+Can check by
+```
+ls -l  /dev/tty*
+```
+
+It should be ttyACM(?) where (?) is a digit
