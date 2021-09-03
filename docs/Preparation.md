@@ -31,4 +31,4 @@ All the images and xml dataset should be here
 - Changing the image to grayscale
 - Ostu thresholding
 
-![dataset](otsu.PNG)
+![dataset](preparation/otsu.PNG)
