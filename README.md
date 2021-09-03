@@ -232,9 +232,13 @@ tensorboard --logdir=.
 ```
 
 ![step 8 tensor](docs/steps/step_8_tensor.PNG)
-![step 8 tensor dir](docs/steps/step_8_tensor_dir.PNG)
-![step 8 tensorboard](docs/steps/step_8_tensorboard.PNG)
+The changing directory
 
+![step 8 tensor dir](docs/steps/step_8_tensor_dir.PNG)
+The command to enter
+
+![step 8 tensorboard](docs/steps/step_8_tensorboard.PNG)
+Tensorboard
 
 You should be able to see the 
 
