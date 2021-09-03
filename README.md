@@ -240,9 +240,11 @@ The command to enter
 ![step 8 tensorboard](docs/steps/step_8_tensorboard.PNG)
 Tensorboard
 
-You should be able to see the 
 
 #### 9. Complie to EdgeTPU
 Unfortunately, the compilation can only be ran in a linux platform. In this case, GoogleColab will be better as it does support the process. Upload "Coral_EdgeTPU_Compiler.ipynb" to GoogleColab and run the process accordingly.
 
-Recommended to use a model of 300 x 300 for Raspberry Pi 3B + 
+Recommended to use a model of 300x300 for Raspberry Pi 3B+ 
+E.g. SSD MobileNet v2 320x320
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
