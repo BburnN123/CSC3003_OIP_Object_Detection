@@ -81,11 +81,13 @@ Once done, launch Jupyter Notebook and open the TFLITE_Model_Maker.ipynb from th
 
 ![tflite directory](docs/tflite_directory.PNG)
 
-# Additional Steps you can follow
+## Additional Steps you can follow
 1) [Preparing of dataset ](docs/Preparation.md)
 2) [Deployment to Raspberry Pi](docs/Deployment.md)
 3) 
-### Running the Running the TFLITE_Model_Maker.ipynb
+
+
+## Running the Running the TFLITE_Model_Maker.ipynb
 #### 0. Setting up the environment
 
 The steps will generate the empty folder for the preparation
