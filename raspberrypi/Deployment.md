@@ -26,20 +26,22 @@ sudo apt-get install python3-tflite-runtime
 ## Your folder should have the following
 - SSCleaner.py
 - test_camera.py (Optional to test the camera)
-- Model directory (Contain all the model and label)
+- model directory (Contain all the model and label)
 - Photos (For the SSClean.py to load the image)
 
 ![folder](docs/example.PNG)
 
-## Run the file
+## Run the file (The sample model)
 ``` 
 python3 SSCleaner.py --modeldir=model --grayscale --dev=ttyACM0
 ```
 
 Options
---modeldir (the path to all your model)
+-- modeldir (the path to all your model)
 -- grayscale (enable grayscale image)
 -- dev (serial port to the audrino) 
+-- labels (path to a specific label filename) (model/label.txt)
+-- graph (path to a specific model filename) (model/model.txt)
 
 Can check by
 ```
