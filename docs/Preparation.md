@@ -14,7 +14,7 @@ All the images and xml dataset should be here
 
 ### 2. Run as per normal You will be able to see a csv file being created under workspace/annotations/dataset_label.csv
 
-### 3. You are able to specific the number of image you want to train under 4. Split Image
+### 3. You are able to specific the number of image you want to train under "4. Split Image"
 
 ![split dataset](preparation/split.PNG)
 
