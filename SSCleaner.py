@@ -15,7 +15,7 @@ import importlib.util
 from time import sleep
 from picamera import PiCamera
 from threading import Thread
-import serial
+import SERIAL
 
 # Global Vars
 LARGEFONT = ("Segoe UI", 15)
@@ -55,6 +55,9 @@ parser.add_argument('--edgetpu', help='Use Coral Edge TPU Accelerator to speed u
                     action='store_true')
 parser.add_argument('--grayscale', help='Using GrayScale Image',
                     action='store_true')
+parser.add_argument('--dev', help='Set dev/ttyACM',
+                    action=None)
+
 
 
 args = parser.parse_args()
@@ -65,6 +68,9 @@ LABELMAP_NAME = args.labels
 min_conf_threshold = float(args.threshold)
 use_TPU = args.edgetpu
 use_GRAYSCALE = args.grayscale
+TTYACM_PORT = args.dev
+
+
 
 # Parse input image name and directory. 
 IM_NAME = args.image
@@ -110,7 +116,7 @@ class SSCleaner(tk.Tk):
         # self.shared_data = pd.DataFrame([])
 
         # Iterate through tuple consisting of the different page layouts
-        for F in (mainPage, washingPage, dryPage, steralizePage, collectionPage):
+        for F in (mainPage, washingPage, dryPage, sterilisingPage, collectionPage):
 
             frame = F(CONTAINER, self)
             frame.config(background='white')
@@ -156,10 +162,10 @@ def nextFrame(controller, steps, currentClass):
     # 0 = mainPage
     # 1 = washingPage
     # 2 = dryPage
-    # 3 = steralizePage
+    # 3 = sterilisingPage
     # 4 = collectionPage
     indexPage = {0: mainPage, 1: washingPage,
-                 2: dryPage, 3: steralizePage, 4: collectionPage}
+                 2: dryPage, 3: sterilisingPage, 4: collectionPage}
 
     global CONTAINER
     global APP
@@ -178,7 +184,8 @@ def nextFrame(controller, steps, currentClass):
     APP.frames[currentClass].config(background='white')
     APP.frames[currentClass].grid(row=0, column=0, sticky="nsew")
     APP.frames[currentClass].tkraise()
-
+   
+    SERIAL.write(b"stop\n")
     controller.show_frame(nextPage)
 
 
@@ -189,24 +196,23 @@ def popup_window(controller, steps, page):
     else:
         pass
 
-
-
-
 class Timer():
     def __init__(self):
         # Configure the timer under the reset function
         self.timer = 20
         self.action = False
+        self.steps = 0
 
     def setlabel(self, label, currentClass):
         self.label = label
         self.currentClass = currentClass
 
     def countdown(self):
+        # global #SERIAL
         # Initial is false
         if self.action == True:
             if self.timer < 0:
-
+                # self.#SERIAL.stop
                 nextFrame(CONTROLLER, PAGE, self.currentClass)
             else:
                 seconds = self.timer % (24 * 3600)
@@ -214,7 +220,7 @@ class Timer():
                 seconds %= 3600
                 minutes = seconds // 60
                 seconds %= 60
-
+                
                 # Checks if this is the drying page and trigger this check every 20 seconds
                 if PAGE == 2 and self.timer % 20 == 0 and self.timer != 0:
                     #Edit this to get humility to activate camera
@@ -281,20 +287,36 @@ class Timer():
     def start_resume(self, steps):
         global PAGE
         if PAGE == steps:
+            # When the action start
             if self.action == False:
                 self.action = True
+                self.steps = steps
                 self.countdown()
 
+                if self.steps == 1:
+                    SERIAL.write(b"wash\n")
+                elif self.steps == 2:
+                    SERIAL.write(b"dry\n")
+                    print("Dry")
+                elif self.steps == 3:
+                    SERIAL.write(b"ster\n")
+     
                 print("resume")
+               
             # If click again it will resume
             else:
                 self.action = False
+                self.SERIAL.stop
+                SERIAL.write(b"stop\n")
                 print("pause")
 
     def reset(self):
+        global SERIAL
         #self.timer = 3
         self.timer = 50
         self.action = False
+        SERIAL.write(b"stop\n")
+
 
 # Frame for the main page
 
@@ -438,12 +460,14 @@ class washingPage(tk.Frame):
         self.buttonResumeStop.image = buttonImg
 
     def stop(self):
+        global SERIAL
+        SERIAL.write(b"stop\n")
         popup_window(self.controller, None, washingPage)
 
     def start():
         global SERIAL
-
-        # SERIAL.write(b"wash\n")
+        
+        SERIAL.write(b"wash\n")
         TIMER.reset()
         TIMER.setlabel(TIMELABEL1, washingPage)
         TIMER.start_resume(1)
@@ -539,18 +563,20 @@ class dryPage(tk.Frame):
         self.buttonResumeStop.image = buttonImg
 
     def stop(self):
+        global SERIAL
+        SERIAL.write(b"stop\n")
         popup_window(self.controller, None, dryPage)
 
     def start():
         global SERIAL
 
-        # SERIAL.write(b"dry\n")
+        SERIAL.write(b"dry\n")
         TIMER.reset()
         TIMER.setlabel(TIMELABEL2, dryPage)
         TIMER.start_resume(2)
 
 
-class steralizePage(tk.Frame):
+class sterilisingPage(tk.Frame):
     def __init__(self, parent, controller, attr=None):
         tk.Frame.__init__(self, parent)
 
@@ -582,7 +608,7 @@ class steralizePage(tk.Frame):
         label.grid(row=0, column=1, padx=10, pady=10)
 
         usecaseLabel = ttk.Label(
-            self, text="Steralizing in progress...", font=self.bold20, style="BW.TLabel")
+            self, text="Sterilising in progress...", font=self.bold20, style="BW.TLabel")
         usecaseLabel.grid(row=1, column=1, padx=10, pady=10)
 
         # Set the time label
@@ -639,14 +665,14 @@ class steralizePage(tk.Frame):
         self.buttonResumeStop.image = buttonImg
 
     def stop(self):
-        popup_window(self.controller, None, steralizePage)
+        popup_window(self.controller, None, sterilisingPage)
 
     def start():
         global SERIAL
 
-        # SERIAL.write(b"sterilize\n")
+        SERIAL.write(b"ster\n")
         TIMER.reset()
-        TIMER.setlabel(TIMELABEL3, steralizePage)
+        TIMER.setlabel(TIMELABEL3, sterilisingPage)
         TIMER.start_resume(3)
 
 
@@ -852,8 +878,8 @@ def main():
     global APP
     global SERIAL
 
-    # SERIAL = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    # SERIAL.flush()
+    SERIAL = SERIAL.SERIAL('/dev/{}'.format(TTYACM_PORT), 9600, timeout=1)
+    SERIAL.flush()
 
     APP = SSCleaner()
     APP.mainloop()
