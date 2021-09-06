@@ -2,6 +2,8 @@
 
 Last updated : 3/9/2021
 
+[![Demo Product](https://youtu.be/6D8jMdVK9GM)
+
 ## Installation
 This project is using TensorFlow 2.5.0. Compatibility of the version can be found at [TensorFlow GPU Support](https://www.tensorflow.org/install/source#gpu)
 
