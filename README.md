@@ -2,7 +2,7 @@
 
 Last updated : 3/9/2021
 
-[![IMAGE ALT TEXT HERE](https://i9.ytimg.com/vi_webp/6D8jMdVK9GM/mqdefault.webp?v=6130314d&sqp=CNiv2IkG&rs=AOn4CLCQfgKW3Mfai5KdnAYxTXJL1hoD6g](https://youtu.be/6D8jMdVK9GM)
+[![Demo Video](https://i9.ytimg.com/vi_webp/6D8jMdVK9GM/mqdefault.webp?v=6130314d&sqp=CNiv2IkG&rs=AOn4CLCQfgKW3Mfai5KdnAYxTXJL1hoD6g)](https://youtu.be/6D8jMdVK9GM)
 
 ## Installation
 This project is using TensorFlow 2.5.0. Compatibility of the version can be found at [TensorFlow GPU Support](https://www.tensorflow.org/install/source#gpu)
